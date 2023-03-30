@@ -46,6 +46,8 @@ module.exports = config => {
 				]
 			});
 
+			this.addDependencies(inputPath, result.loadedUrls);
+
 			// This is the render function, `data` is the full data cascade
 			return async (data) => {
 				return result.css;
