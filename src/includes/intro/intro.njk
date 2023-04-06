@@ -1,8 +1,10 @@
 {% from "../../components/button/button.njk" import button %}
 
 <section class="intro">
-	<p>{{ intro.hi }}</p>
-	<h1>{{ intro.name }}</h1>
-	<p>{{ intro.who }}</p>
-	{{ button({ text: 'Click Me!' }) }}
+	<div class="container">
+		<p>{{ intro.hi }}</p>
+		<h1>{{ intro.name }}</h1>
+		<p>{{ intro.who }}</p>
+		{{ button({ text: 'Click Me!' }) }}
+	</div>
 </section>

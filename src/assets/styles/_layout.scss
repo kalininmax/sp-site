@@ -1,0 +1,15 @@
+.container {
+	width: min(var(--container-max-width), 100% - (var(--container-padding) * 2));
+	margin-inline: auto;
+}
+
+.page {
+	&__body {
+		display: flex;
+		flex-direction: column;
+	}
+	&__main {
+		flex-grow: 1;
+		padding: rem(32) 0;
+	}
+}

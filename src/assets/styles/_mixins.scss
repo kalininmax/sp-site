@@ -1,0 +1,198 @@
+@use 'sass:math';
+
+@mixin hide-input {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	opacity: 0;
+	-webkit-appearance: button;
+}
+
+@mixin hide-input-file {
+	@include hide-input;
+	font-size: 100px;
+	left: auto;
+	right: 0;
+	width: auto;
+	height: auto;
+}
+
+/* Grid */
+@mixin cols($cols, $max-cols) {
+	width: (100% / $max-cols * $cols);
+}
+
+@mixin offset($offset-cols, $max-cols) {
+	@if $offset-cols == 0 {
+		margin-left: 0;
+	} @else {
+		margin-left: (100% / $max-cols * $offset-cols);
+	}
+}
+
+@mixin text-overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin retina {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (min-device-pixel-ratio: 2) {
+		@content;
+	}
+}
+
+@mixin placeholder {
+	&:-ms-input-placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&::placeholder {
+		@content;
+	}
+}
+
+@mixin scrollbar {
+	&::-moz-scrollbar {
+		@content;
+	}
+	&::-webkit-scrollbar {
+		@content;
+	}
+	&::scrollbar {
+		@content;
+	}
+}
+
+@mixin scrollbar-track {
+	&::-moz-scrollbar-track {
+		@content;
+	}
+	&::-webkit-scrollbar-track {
+		@content;
+	}
+	&::scrollbar-track {
+		@content;
+	}
+}
+
+@mixin scrollbar-thumb {
+	&::-moz-scrollbar-thumb {
+		@content;
+	}
+	&::-webkit-scrollbar-thumb {
+		@content;
+	}
+	&::scrollbar-thumb {
+		@content;
+	}
+}
+
+@mixin scrollbar-track-piece {
+	&::-moz-scrollbar-track-piece {
+		@content;
+	}
+	&::-webkit-scrollbar-track-piece {
+		@content;
+	}
+	&::scrollbar-track-piece {
+		@content;
+	}
+}
+
+@mixin arrow($width, $height, $bg, $direction) {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	@if $direction == t {
+		border-width: 0 $width / 2 + px $height + px $width / 2 + px;
+		border-color: transparent transparent $bg transparent;
+	}
+	@if $direction == r {
+		border-width: $height / 2 + px 0 $height / 2 + px $width + px;
+		border-color: transparent transparent transparent $bg;
+	}
+	@if $direction == b {
+		border-width: $height + px $width / 2 + px 0 $width / 2 + px;
+		border-color: $bg transparent transparent transparent;
+	}
+	@if $direction == l {
+		border-width: $height / 2 + px $width + px $height / 2 + px 0;
+		border-color: transparent $bg transparent transparent;
+	}
+	@if $direction == tl {
+		border-width: $height + px $width + px 0 0;
+		border-color: $bg transparent transparent transparent;
+	}
+	@if $direction == tr {
+		border-width: 0 $width + px $height + px 0;
+		border-color: transparent $bg transparent transparent;
+	}
+	@if $direction == br {
+		border-width: 0 0 $height + px $width + px;
+		border-color: transparent transparent $bg transparent;
+	}
+	@if $direction == bl {
+		border-width: $width + px 0 0 $height + px;
+		border-color: transparent transparent transparent $bg;
+	}
+}
+
+@mixin loading {
+	@at-root html._loading #{&} {
+		@content;
+	}
+}
+
+@mixin mac {
+	@at-root html._mac #{&} {
+		@content;
+	}
+}
+
+@mixin windows {
+	@at-root html._win #{&} {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@at-root html._desktop #{&} {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@at-root html._mobile #{&} {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@at-root html._tablet #{&} {
+		@content;
+	}
+}
+
+@mixin phone {
+	@at-root html._phone #{&} {
+		@content;
+	}
+}
+
+@function rem($px, $context: 16) {
+	@return calc(round(calc($px / $context) * 1rem * 10000) / 10000);
+}

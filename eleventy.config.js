@@ -2,6 +2,10 @@ const path = require('node:path');
 const yaml = require('js-yaml');
 const htmlMinifier = require('html-minifier-terser');
 const sass = require('sass');
+const postcss = require('postcss');
+const postcssMediaMinmax = require('postcss-media-minmax');
+const autoprefixer = require('autoprefixer');
+const postcssCsso = require('postcss-csso');
 
 module.exports = config => {
 	config.ignores.add('src/components');
@@ -30,11 +34,11 @@ module.exports = config => {
 	// STYLES
 	config.addTemplateFormats('scss');
 	config.addExtension('scss', {
-		outputFileExtension: 'css', // optional, default: 'html'
+		outputFileExtension: 'css',
 
-		// `compile` is called once per .scss file in the input directory
 		compile: async function(inputContent, inputPath) {
-			let parsed = path.parse(inputPath);
+			const parsed = path.parse(inputPath);
+
 			if(parsed.name.startsWith('_')) {
 				return;
 			}
@@ -42,15 +46,19 @@ module.exports = config => {
 			let result = sass.compileString(inputContent, {
 				loadPaths: [
 					parsed.dir || '.',
-					this.config.dir.includes
+					'node_modules'
 				]
 			});
 
 			this.addDependencies(inputPath, result.loadedUrls);
 
-			// This is the render function, `data` is the full data cascade
-			return async (data) => {
-				return result.css;
+			return async () => {
+				const output = await postcss([
+					postcssMediaMinmax,
+					autoprefixer,
+					postcssCsso,
+				]).process(result.css, { from: inputPath })
+				return output.css;
 			};
 		}
 	});

@@ -1,7 +1,10 @@
-$white: #fff;
-$black: #000;
-
 :root {
-	--white: #{$white};
-	--black: #{$black};
+	--white: #fff;
+	--black: #000;
+	--teal: #5ab9c1;
+
+	--default-bg-color: var(--white);
+
+	--container-max-width: #{rem(1920)};
+	--container-padding: #{rem(40)};
 }
