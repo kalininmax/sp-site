@@ -6,9 +6,30 @@ const postcss = require('postcss');
 const postcssMediaMinmax = require('postcss-media-minmax');
 const autoprefixer = require('autoprefixer');
 const postcssCsso = require('postcss-csso');
+const Image = require("@11ty/eleventy-img");
 
 module.exports = config => {
 	config.ignores.add('src/components');
+
+	config.addShortcode('image', async function(src, alt = '') {
+		const originalFormat = src.split('.').pop();
+
+		const metadata = await Image(`src/assets/images/${src}`, {
+			widths: [375, 640, 1280, 1920, 2560],
+			formats: ['avif', 'webp', originalFormat],
+			urlPath: 'assets/images/',
+			outputDir: 'build/assets/images/'
+		});
+
+		const imageAttr = {
+			alt,
+			sizes: '100vw',
+			loading: 'lazy',
+			decoding: 'async',
+		};
+
+		return Image.generateHTML(metadata, imageAttr);
+	})
 
 	config.addDataExtension('yml', content => yaml.load(content));
 
@@ -66,16 +87,10 @@ module.exports = config => {
 
 	// Passthrough copy
 	[
-		'src/assets/images',
 		'src/assets/fonts',
 	].forEach(
 		path => config.addPassthroughCopy(path)
 	);
-
-	// Dev Server
-	config.setServerOptions({
-		watch: ['src/assets/**/*.scss']
-	});
 
 	// Config
 	return {
