@@ -8,9 +8,12 @@ const autoprefixer = require('autoprefixer');
 const postcssCsso = require('postcss-csso');
 const Image = require("@11ty/eleventy-img");
 
+const { inlineSvgSprite } = require('./shortcodes');
+
 module.exports = config => {
 	config.ignores.add('src/components');
 
+	config.addNunjucksShortcode('svg_sprite', inlineSvgSprite);
 	config.addShortcode('image', async function(src, alt = '') {
 		const originalFormat = src.split('.').pop();
 
@@ -91,6 +94,11 @@ module.exports = config => {
 	].forEach(
 		path => config.addPassthroughCopy(path)
 	);
+
+	// Dev Server
+	config.setServerOptions({
+		watch: ['build/assets/images/svg/sprite.svg']
+	});
 
 	// Config
 	return {

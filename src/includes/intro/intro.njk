@@ -1,4 +1,5 @@
 {% from "../../components/button/button.njk" import button %}
+{% from "../../components/icon/icon.njk" import icon %}
 
 <section class="intro">
 	<div class="container">
@@ -6,6 +7,9 @@
 		<h1>{{ intro.name }}</h1>
 		<p>{{ intro.who }}</p>
 		{{ button({ text: 'Click Me!' }) }}
+
+		{{ icon({ iconName: 'svg-logo', attr: 'width=300 height=300' }) }}
+		{{ icon({ iconName: 'arrow-right', attr: 'width=300 height=300' }) }}
 
 		{% image intro.img %}
 	</div>
