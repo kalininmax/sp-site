@@ -6,12 +6,30 @@ const postcss = require('postcss');
 const postcssMediaMinmax = require('postcss-media-minmax');
 const autoprefixer = require('autoprefixer');
 const postcssCsso = require('postcss-csso');
-const Image = require("@11ty/eleventy-img");
+const Image = require('@11ty/eleventy-img');
+const pluginIcons = require('eleventy-plugin-icons');
 
 const { inlineSvgSprite } = require('./shortcodes');
 
 module.exports = config => {
 	config.ignores.add('src/components');
+
+	config.addPlugin(pluginIcons, {
+		mode: 'sprite',
+		sources: {
+			icons: 'src/assets/images/svg/',
+		},
+		default: 'icons',
+		enable: ['icons'],
+		insertIcon: {
+			shortcode: 'icon',
+		},
+		insertSpriteSheet: {
+			shortcode: 'spriteSheet',
+			styles: 'position: absolute; width: 0; height: 0; overflow: hidden;',
+		},
+		optimize: true,
+	});
 
 	config.addNunjucksShortcode('svg_sprite', inlineSvgSprite);
 	config.addShortcode('image', async function(src, alt = '') {
