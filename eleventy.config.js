@@ -84,6 +84,7 @@ module.exports = config => {
 					'node_modules'
 				],
 				sourceMap: isDev,
+				sourceMapIncludeSources: isDev,
 			});
 
 			this.addDependencies(inputPath, result.loadedUrls);
