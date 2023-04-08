@@ -24,9 +24,6 @@ module.exports = config => {
 		},
 		sprites: {
 				shortcode: 'spriteSheet',
-				insertAttributes: {
-					style: 'position: absolute; width: 0; height: 0; overflow: hidden;',
-				},
 				generateFile: 'assets/images/svg/sprite.svg',
 				insertAll: true,
 		}
@@ -109,7 +106,6 @@ module.exports = config => {
 
 	// Passthrough copy
 	[
-		'src/assets/images/svg',
 		'src/assets/fonts',
 	].forEach(
 		path => config.addPassthroughCopy(path)

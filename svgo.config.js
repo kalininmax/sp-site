@@ -38,5 +38,7 @@ module.exports = {
 		'removeStyleElement',
 		'convertStyleToAttrs',
 		'cleanupIds',
+		'removeDimensions',
+		'prefixIds',
 	],
 };

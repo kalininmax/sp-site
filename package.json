@@ -18,7 +18,7 @@
 		"@11ty/eleventy": "^2.0.1",
 		"@11ty/eleventy-img": "^3.1.0",
 		"autoprefixer": "^10.4.14",
-		"eleventy-plugin-icons": "^2.0.0-1",
+		"eleventy-plugin-icons": "^2.0.0-3",
 		"gulp": "^4.0.2",
 		"gulp-cheerio": "^1.0.0",
 		"gulp-rename": "^2.0.0",
