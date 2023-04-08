@@ -1,6 +1,7 @@
 const path = require('node:path');
 const yaml = require('js-yaml');
 const htmlMinifier = require('html-minifier-terser');
+const htmlPrettifier = require('html-prettify');
 const sass = require('sass');
 const postcss = require('postcss');
 const postcssMediaMinmax = require('postcss-media-minmax');
@@ -39,7 +40,14 @@ module.exports = config => {
 	config.addDataExtension('yml', content => yaml.load(content));
 
 	// HTML
-	config.addTransform('html-minify', (content, path) => {
+	isDev && config.addTransform('html-prettify', (content, path) => {
+		if (path && path.endsWith('.html')) {
+			return htmlPrettifier(content);
+		}
+
+		return content;
+	});
+	isProd && config.addTransform('html-minify', (content, path) => {
 		if (path && path.endsWith('.html')) {
 			return htmlMinifier.minify(
 				content, {
