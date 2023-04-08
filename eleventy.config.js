@@ -10,15 +10,12 @@ const esbuild = require('esbuild');
 const Image = require('@11ty/eleventy-img');
 const pluginIcons = require('eleventy-plugin-icons');
 
-const { inlineSvgSprite } = require('./shortcodes');
-
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = config => {
 	config.ignores.add('src/components');
 
-	config.addNunjucksShortcode('svg_sprite', inlineSvgSprite);
 	config.addShortcode('image', async function(src, sizes = '100vw', alt = '') {
 		const originalFormat = src.split('.').pop();
 
