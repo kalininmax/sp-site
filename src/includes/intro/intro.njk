@@ -8,7 +8,8 @@
 		<p>{{ intro.who }}</p>
 		{{ button({ text: 'Click Me!' }) }}
 
-		{% icon 'svg-logo' %}
+		{{ icon({ iconName: 'svg-logo', attr: 'width=300 height=300' }) }}
+		{{ icon({ iconName: 'arrow-right', attr: 'width=300 height=300' }) }}
 
 		{% image intro.img %}
 	</div>

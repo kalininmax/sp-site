@@ -17,17 +17,18 @@ module.exports = config => {
 	config.addPlugin(pluginIcons, {
 		mode: 'sprite',
 		sources: { icons: 'src/assets/images/svg/' },
-		generateFile: 'build/assets/images/svg/',
 		default: 'icons',
-		enable: ['icons'],
-		insertAll: true,
 		optimize: true,
-		insertIcon: {
-			shortcode: 'icon',
+		icon: {
+				shortcode: 'icon',
 		},
-		insertSpriteSheet: {
-			shortcode: 'spriteSheet',
-			styles: 'position: absolute; width: 0; height: 0; overflow: hidden;',
+		sprites: {
+				shortcode: 'spriteSheet',
+				insertAttributes: {
+					style: 'position: absolute; width: 0; height: 0; overflow: hidden;',
+				},
+				generateFile: 'assets/images/svg/sprite.svg',
+				insertAll: true,
 		}
 	});
 
@@ -108,6 +109,7 @@ module.exports = config => {
 
 	// Passthrough copy
 	[
+		'src/assets/images/svg',
 		'src/assets/fonts',
 	].forEach(
 		path => config.addPassthroughCopy(path)
