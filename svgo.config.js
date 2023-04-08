@@ -37,8 +37,7 @@ module.exports = {
 		'removeDesc',
 		'removeStyleElement',
 		'convertStyleToAttrs',
-		'cleanupIds',
 		'removeDimensions',
-		'prefixIds',
+		'cleanupIds',
 	],
 };
