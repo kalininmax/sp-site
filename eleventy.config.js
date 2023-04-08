@@ -6,35 +6,24 @@ const postcss = require('postcss');
 const postcssMediaMinmax = require('postcss-media-minmax');
 const autoprefixer = require('autoprefixer');
 const postcssCsso = require('postcss-csso');
+const esbuild = require('esbuild');
 const Image = require('@11ty/eleventy-img');
 const pluginIcons = require('eleventy-plugin-icons');
 
 const { inlineSvgSprite } = require('./shortcodes');
 
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = config => {
 	config.ignores.add('src/components');
 
-	config.addPlugin(pluginIcons, {
-		mode: 'sprite',
-		sources: { icons: 'src/assets/images/svg/' },
-		default: 'icons',
-		optimize: true,
-		icon: {
-				shortcode: 'icon',
-		},
-		sprites: {
-				shortcode: 'spriteSheet',
-				generateFile: 'assets/images/svg/sprite.svg',
-				insertAll: true,
-		}
-	});
-
 	config.addNunjucksShortcode('svg_sprite', inlineSvgSprite);
-	config.addShortcode('image', async function(src, alt = '') {
+	config.addShortcode('image', async function(src, sizes = '100vw', alt = '') {
 		const originalFormat = src.split('.').pop();
 
 		const metadata = await Image(`src/assets/images/${src}`, {
-			widths: [375, 640, 1280, 1920, 2560],
+			widths: [640, 960, 1280, 1920, 2560],
 			formats: ['avif', 'webp', originalFormat],
 			urlPath: 'assets/images/',
 			outputDir: 'build/assets/images/'
@@ -42,7 +31,7 @@ module.exports = config => {
 
 		const imageAttr = {
 			alt,
-			sizes: '100vw',
+			sizes,
 			loading: 'lazy',
 			decoding: 'async',
 		};
@@ -71,7 +60,13 @@ module.exports = config => {
 		return content;
 	});
 
-	// STYLES
+	// SCSS
+	const postcssPlugins = [
+		postcssMediaMinmax,
+		autoprefixer,
+		isProd && postcssCsso,
+	].filter((value) => value);
+
 	config.addTemplateFormats('scss');
 	config.addExtension('scss', {
 		outputFileExtension: 'css',
@@ -87,19 +82,41 @@ module.exports = config => {
 				loadPaths: [
 					parsed.dir || '.',
 					'node_modules'
-				]
+				],
+				sourceMap: isDev,
 			});
 
 			this.addDependencies(inputPath, result.loadedUrls);
 
 			return async () => {
-				const output = await postcss([
-					postcssMediaMinmax,
-					autoprefixer,
-					postcssCsso,
-				]).process(result.css, { from: inputPath })
+				const output = await postcss(postcssPlugins).process(result.css, { from: inputPath });
 				return output.css;
 			};
+		}
+	});
+
+	// JS
+
+	config.addTemplateFormats('js');
+	config.addExtension('js', {
+		outputFileExtension: 'js',
+		compile: async (content, path) => {
+			if (path !== './src/assets/scripts/index.js') {
+				return;
+			}
+
+			return async () => {
+				let output = await esbuild.build({
+					target: 'es2020',
+					entryPoints: [path],
+					minify: isProd,
+					bundle: true,
+					write: false,
+					sourcemap: isDev,
+				});
+
+				return output.outputFiles[0].text;
+			}
 		}
 	});
 
@@ -114,6 +131,21 @@ module.exports = config => {
 	// Dev Server
 	config.setServerOptions({
 		watch: ['build/assets/images/svg/sprite.svg']
+	});
+
+	config.addPlugin(pluginIcons, {
+		mode: 'sprite',
+		sources: { icons: 'src/assets/images/svg/' },
+		default: 'icons',
+		optimize: true,
+		icon: {
+				shortcode: 'icon',
+		},
+		sprites: {
+				shortcode: 'spriteSheet',
+				generateFile: 'assets/images/svg/sprite.svg',
+				insertAll: true,
+		}
 	});
 
 	// Config
