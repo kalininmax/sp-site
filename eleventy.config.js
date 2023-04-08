@@ -16,19 +16,19 @@ module.exports = config => {
 
 	config.addPlugin(pluginIcons, {
 		mode: 'sprite',
-		sources: {
-			icons: 'src/assets/images/svg/',
-		},
+		sources: { icons: 'src/assets/images/svg/' },
+		generateFile: 'build/assets/images/svg/',
 		default: 'icons',
 		enable: ['icons'],
+		insertAll: true,
+		optimize: true,
 		insertIcon: {
 			shortcode: 'icon',
 		},
 		insertSpriteSheet: {
 			shortcode: 'spriteSheet',
 			styles: 'position: absolute; width: 0; height: 0; overflow: hidden;',
-		},
-		optimize: true,
+		}
 	});
 
 	config.addNunjucksShortcode('svg_sprite', inlineSvgSprite);

@@ -37,12 +37,6 @@ module.exports = {
 		'removeDesc',
 		'removeStyleElement',
 		'convertStyleToAttrs',
-		{
-			name: 'cleanupIDs',
-			params: {
-				prefix: `${prefix}-`,
-				minify: true
-			}
-		},
+		'cleanupIds',
 	],
 };
