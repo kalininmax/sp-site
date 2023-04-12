@@ -5,7 +5,8 @@
     "build": "cross-env ELEVENTY_ENV=production npm-run-all clean build:eleventy",
     "clean": "rimraf build",
     "dev:eleventy": "eleventy --serve --quiet",
-    "build:eleventy": "eleventy"
+    "build:eleventy": "eleventy",
+    "html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --filterfile .vnurc build/**/*.html"
   },
   "engines": {
     "node": "19"
@@ -28,6 +29,7 @@
     "postcss": "^8.4.21",
     "postcss-csso": "^6.0.1",
     "postcss-media-minmax": "^5.0.0",
-    "rimraf": "^4.4.1"
+    "rimraf": "^4.4.1",
+    "vnu-jar": "^23.4.11"
   }
 }
