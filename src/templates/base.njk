@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html class="page" lang="{{ site.lang }}">
+<html class="page _loading" lang="{{ site.lang }}">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ site.title }}</title>
 	<link rel="stylesheet" href="/assets/styles/index.css?hash">
+
+	{% include "./_head-scripts.njk" %}
 </head>
+
 <body class="page__body">
 	{% spriteSheet %}
 
@@ -14,4 +18,5 @@
 
 	<script src="/assets/scripts/index.js?hash"></script>
 </body>
+
 </html>

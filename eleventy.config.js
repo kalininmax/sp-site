@@ -12,17 +12,17 @@ const pluginIcons = require('eleventy-plugin-icons');
 const isDev = process.env.ELEVENTY_ENV === 'development';
 const isProd = process.env.ELEVENTY_ENV === 'production';
 
-module.exports = config => {
+module.exports = (config) => {
 	config.ignores.add('src/components');
 
-	config.addShortcode('image', async function(src, sizes = '100vw', alt = '') {
+	config.addShortcode('image', async (src, sizes = '100vw', alt = '') => {
 		const originalFormat = src.split('.').pop();
 
 		const metadata = await Image(`src/assets/images/${src}`, {
 			widths: [640, 960, 1280, 1920, 2560],
 			formats: ['avif', 'webp', originalFormat],
 			urlPath: 'assets/images/',
-			outputDir: 'build/assets/images/'
+			outputDir: 'build/assets/images/',
 		});
 
 		const imageAttr = {
@@ -33,9 +33,9 @@ module.exports = config => {
 		};
 
 		return Image.generateHTML(metadata, imageAttr);
-	})
+	});
 
-	config.addDataExtension('yml', content => yaml.load(content));
+	config.addDataExtension('yml', (content) => yaml.load(content));
 
 	// HTML
 	config.addTransform('html-prettify', (content, path) => {
@@ -56,9 +56,9 @@ module.exports = config => {
 	config.addPlugin(eleventySass, {
 		sass: {
 			loadPaths: ['node_modules'],
-      sourceMap: isDev,
-    },
-		postcss: postcss(postcssPlugins)
+			sourceMap: isDev,
+		},
+		postcss: postcss(postcssPlugins),
 	});
 
 	// JS
@@ -66,13 +66,13 @@ module.exports = config => {
 	config.addTemplateFormats('js');
 	config.addExtension('js', {
 		outputFileExtension: 'js',
-		compile: async (content, path) => {
+		compile: async (_, path) => {
 			if (path !== './src/assets/scripts/index.js') {
 				return;
 			}
 
 			return async () => {
-				let output = await esbuild.build({
+				const output = await esbuild.build({
 					target: 'es2020',
 					entryPoints: [path],
 					minify: isProd,
@@ -82,21 +82,16 @@ module.exports = config => {
 				});
 
 				return output.outputFiles[0].text;
-			}
-		}
+			};
+		},
 	});
 
-
 	// Passthrough copy
-	[
-		'src/assets/fonts',
-	].forEach(
-		path => config.addPassthroughCopy(path)
-	);
+	['src/assets/fonts'].forEach((path) => config.addPassthroughCopy(path));
 
 	// Dev Server
 	config.setServerOptions({
-		watch: ['build/assets/images/svg/sprite.svg']
+		watch: ['build/assets/images/svg/sprite.svg'],
 	});
 
 	config.addPlugin(pluginIcons, {
@@ -105,13 +100,13 @@ module.exports = config => {
 		default: 'icons',
 		optimize: true,
 		icon: {
-				shortcode: 'icon',
+			shortcode: 'icon',
 		},
 		sprites: {
-				shortcode: 'spriteSheet',
-				generateFile: 'assets/images/svg/sprite.svg',
-				insertAll: true,
-		}
+			shortcode: 'spriteSheet',
+			generateFile: 'assets/images/svg/sprite.svg',
+			insertAll: true,
+		},
 	});
 
 	// Config
@@ -121,7 +116,7 @@ module.exports = config => {
 			includes: 'includes',
 			layouts: 'templates',
 			data: 'data',
-			output: 'build'
-		}
+			output: 'build',
+		},
 	};
-}
+};
