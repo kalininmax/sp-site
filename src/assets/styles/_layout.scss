@@ -1,6 +1,6 @@
 .container {
-	width: min(var(--container-max-width), 100% - (var(--container-padding) * 2));
 	margin-inline: auto;
+	width: min(var(--container-max-width), 100% - (var(--container-padding) * 2));
 }
 
 .page {

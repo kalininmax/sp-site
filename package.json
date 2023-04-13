@@ -6,7 +6,8 @@
     "clean": "rimraf build",
     "dev:eleventy": "eleventy --serve --quiet",
     "build:eleventy": "eleventy",
-    "html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --filterfile .vnurc build/**/*.html"
+    "html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --filterfile .vnurc build/**/*.html",
+    "css": "stylelint \"src/**/*.scss\""
   },
   "engines": {
     "node": "19"
@@ -30,6 +31,9 @@
     "postcss-csso": "^6.0.1",
     "postcss-media-minmax": "^5.0.0",
     "rimraf": "^4.4.1",
+    "stylelint": "^15.4.0",
+    "stylelint-config-standard-scss": "^8.0.0",
+    "stylelint-order": "^6.0.3",
     "vnu-jar": "^23.4.11"
   }
 }
