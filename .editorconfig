@@ -11,9 +11,6 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.yml]
-indent_style = space
-
-[package.json]
+[{*.yml,package.json,.prettierrc,.stylelintrc}]
 indent_style = space
 indent_size = 2

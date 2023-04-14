@@ -6,6 +6,7 @@
     "clean": "rimraf build",
     "dev:eleventy": "eleventy --serve --quiet",
     "build:eleventy": "eleventy",
+    "test": "npm-run-all editorconfig html css javascript",
     "editorconfig": "editorconfig-checker",
     "html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --filterfile .vnurc build/**/*.html",
     "css": "stylelint \"src/**/*.scss\"",

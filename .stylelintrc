@@ -5,13 +5,13 @@ rules:
   rule-empty-line-before:
     - always
     - except:
-      - inside-block
-      - after-single-line-comment
+        - inside-block
+        - after-single-line-comment
   at-rule-empty-line-before:
     - never
     - ignoreAtRules:
-      - mixin
-      - function
+        - mixin
+        - function
   selector-pseudo-element-no-unknown: null
   custom-property-empty-line-before: null
   selector-no-vendor-prefix: null
@@ -21,7 +21,7 @@ rules:
     - custom-properties
     - declarations
   order/properties-order:
-  # Positioning
+    # Positioning
     - all
     - position
     - top
@@ -36,7 +36,7 @@ rules:
     - inset-inline-start
     - inset-inline-end
     - z-index
-  # Block
+    # Block
     - display
     - grid-template
     - grid-template-rows
@@ -118,7 +118,7 @@ rules:
     - overflow
     - overflow-x
     - overflow-y
-  # Decoration
+    # Decoration
     - box-shadow
     - outline
     - outline-width
@@ -202,7 +202,7 @@ rules:
     - fill-opacity
     - fill-rule
     - color
-  # Text
+    # Text
     - direction
     - writing-mode
     - list-style
