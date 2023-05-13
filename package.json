@@ -3,7 +3,9 @@
   "scripts": {
     "start": "cross-env ELEVENTY_ENV=development npm-run-all clean dev:eleventy",
     "build": "cross-env ELEVENTY_ENV=production npm-run-all clean build:eleventy",
+    "zip": "npm-run-all build archive",
     "clean": "rimraf build",
+    "archive": "bestzip build.zip build",
     "dev:eleventy": "eleventy --serve --quiet",
     "build:eleventy": "eleventy",
     "test": "npm-run-all editorconfig css js",
@@ -11,9 +13,6 @@
     "html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --filterfile .vnurc build/**/*.html",
     "css": "stylelint \"src/**/*.scss\"",
     "js": "eslint eleventy.config.js src/**/*.js"
-  },
-  "engines": {
-    "node": "20"
   },
   "browserslist": [
     "last 2 version",
@@ -23,6 +22,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-img": "^3.1.0",
     "autoprefixer": "^10.4.14",
+    "bestzip": "^2.2.1",
     "cross-env": "^7.0.3",
     "editorconfig-checker": "^5.0.1",
     "eleventy-plugin-icons": "^2.0.0-4",
