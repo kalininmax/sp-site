@@ -5,6 +5,7 @@ const postcss = require('postcss');
 const postcssMediaMinmax = require('postcss-media-minmax');
 const autoprefixer = require('autoprefixer');
 const postcssCsso = require('postcss-csso');
+const postcssAssets = require('postcss-assets');
 const esbuild = require('esbuild');
 const Image = require('@11ty/eleventy-img');
 const pluginIcons = require('eleventy-plugin-icons');
@@ -50,6 +51,7 @@ module.exports = (config) => {
 	const postcssPlugins = [
 		postcssMediaMinmax,
 		autoprefixer,
+		postcssAssets({ loadPaths: ['src/assets/images/inline'], cache: true }),
 		isProd && postcssCsso,
 	].filter((value) => value);
 
@@ -78,7 +80,7 @@ module.exports = (config) => {
 					minify: isProd,
 					bundle: true,
 					write: false,
-					sourcemap: isDev,
+					sourcemap: true,
 				});
 
 				return output.outputFiles[0].text;
