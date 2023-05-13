@@ -13,9 +13,13 @@ const pluginIcons = require('eleventy-plugin-icons');
 const isDev = process.env.ELEVENTY_ENV === 'development';
 const isProd = process.env.ELEVENTY_ENV === 'production';
 
+const shortcodes = require('./shortcodes');
+
+/** @param {import("@11ty/eleventy").UserConfig} config */
 module.exports = (config) => {
 	config.ignores.add('src/components');
 
+	config.addShortcode('hash', shortcodes.hash);
 	config.addShortcode('image', async (src, sizes = '100vw', alt = '') => {
 		const originalFormat = src.split('.').pop();
 
@@ -64,7 +68,6 @@ module.exports = (config) => {
 	});
 
 	// JS
-
 	config.addTemplateFormats('js');
 	config.addExtension('js', {
 		outputFileExtension: 'js',
@@ -105,7 +108,7 @@ module.exports = (config) => {
 			shortcode: 'icon',
 		},
 		sprites: {
-			shortcode: 'spriteSheet',
+			shortcode: 'svgSprite',
 			generateFile: 'assets/images/svg/sprite.svg',
 			insertAll: true,
 		},
