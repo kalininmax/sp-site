@@ -1,3 +1,3 @@
-module.exports = async function () {
+module.exports = function () {
 	return new Date().getTime();
 };
