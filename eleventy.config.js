@@ -7,7 +7,6 @@ const autoprefixer = require('autoprefixer');
 const postcssCsso = require('postcss-csso');
 const postcssAssets = require('postcss-assets');
 const esbuild = require('esbuild');
-const Image = require('@11ty/eleventy-img');
 const pluginIcons = require('eleventy-plugin-icons');
 
 const isDev = process.env.ELEVENTY_ENV === 'development';
@@ -19,30 +18,13 @@ const shortcodes = require('./shortcodes');
 module.exports = (config) => {
 	config.ignores.add('src/components');
 
-	config.addShortcode('hash', shortcodes.hash);
-	config.addShortcode('image', async (src, sizes = '100vw', alt = '') => {
-		const originalFormat = src.split('.').pop();
-
-		const metadata = await Image(`src/assets/images/${src}`, {
-			widths: [640, 960, 1280, 1920, 2560],
-			formats: ['avif', 'webp', originalFormat],
-			urlPath: 'assets/images/',
-			outputDir: 'build/assets/images/',
-		});
-
-		const imageAttr = {
-			alt,
-			sizes,
-			loading: 'lazy',
-			decoding: 'async',
-		};
-
-		return Image.generateHTML(metadata, imageAttr);
+	Object.keys(shortcodes).forEach((name) => {
+		config.addShortcode(name, shortcodes[name]);
 	});
 
 	config.addDataExtension('yml', (content) => yaml.load(content));
 
-	// HTML
+	// ======= HTML =======
 	config.addTransform('html-prettify', (content, path) => {
 		if (path && path.endsWith('.html')) {
 			return htmlPrettifier(content);
@@ -51,7 +33,7 @@ module.exports = (config) => {
 		return content;
 	});
 
-	// SCSS
+	// ======= SCSS =======
 	const postcssPlugins = [
 		postcssMediaMinmax,
 		autoprefixer,
@@ -67,7 +49,7 @@ module.exports = (config) => {
 		postcss: postcss(postcssPlugins),
 	});
 
-	// JS
+	// ======= JS =======
 	config.addTemplateFormats('js');
 	config.addExtension('js', {
 		outputFileExtension: 'js',
@@ -91,14 +73,15 @@ module.exports = (config) => {
 		},
 	});
 
-	// Passthrough copy
+	// ======= COPY =======
 	['src/assets/fonts'].forEach((path) => config.addPassthroughCopy(path));
 
-	// Dev Server
-	config.setServerOptions({
-		watch: ['build/assets/images/svg/sprite.svg'],
-	});
+	// ======= DEV SERVER =======
+	// config.setServerOptions({
+	// 	watch: ['build/assets/images/svg/sprite.svg'],
+	// });
 
+	// ======= SVG SPRITE =======
 	config.addPlugin(pluginIcons, {
 		mode: 'sprite',
 		sources: { icons: 'src/assets/images/svg/' },
@@ -114,7 +97,6 @@ module.exports = (config) => {
 		},
 	});
 
-	// Config
 	return {
 		dir: {
 			input: 'src',

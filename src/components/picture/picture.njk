@@ -1,0 +1,12 @@
+{% macro picture(props) %}
+
+{% set src = props.src %}
+{% set cls = props.className %}
+{% set sizes = props.sizes %}
+{% set alt = props.alt %}
+{% set loading = props.loading %}
+{% set decoding = props.decoding %}
+
+{% image src, cls, sizes, alt, loading, decoding %}
+
+{% endmacro %}

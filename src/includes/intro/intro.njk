@@ -1,5 +1,6 @@
 {% from "../../components/button/button.njk" import button %}
 {% from "../../components/icon/icon.njk" import icon %}
+{% from "../../components/picture/picture.njk" import picture %}
 
 <section class="intro">
 	<div class="container">
@@ -11,6 +12,10 @@
 		{{ icon({ iconName: 'svg-logo', attr: 'width=300 height=300' }) }}
 		{{ icon({ iconName: 'arrow-right', attr: 'width=300 height=300' }) }}
 
-		{% image intro.img %}
+		{{ picture({
+			src: intro.img,
+			className: 'intro__img'
+		}) }}
+
 	</div>
 </section>
