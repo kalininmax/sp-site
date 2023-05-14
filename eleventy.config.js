@@ -52,33 +52,22 @@ module.exports = (config) => {
 	config.addTemplateFormats('js');
 	config.addExtension('js', {
 		outputFileExtension: 'js',
-		compile: async (_, path) => {
-			if (path !== './src/assets/scripts/index.js') {
-				return;
-			}
-
-			return async () => {
-				const output = await esbuild.build({
-					target: 'es2020',
-					entryPoints: [path],
-					minify: isProd,
-					bundle: true,
-					write: false,
-					sourcemap: true,
-				});
-
-				return output.outputFiles[0].text;
-			};
+		compile: async () => async () => {
+			await esbuild.build({
+				target: 'es2020',
+				entryPoints: ['./src/assets/scripts/index.js'],
+				minify: isProd,
+				bundle: true,
+				write: true,
+				sourcemap: true,
+				outbase: 'src/',
+				outdir: 'build/',
+			});
 		},
 	});
 
 	// ======= COPY =======
 	['src/assets/fonts'].forEach((path) => config.addPassthroughCopy(path));
-
-	// ======= DEV SERVER =======
-	// config.setServerOptions({
-	// 	watch: ['build/assets/images/svg/sprite.svg'],
-	// });
 
 	// ======= SVG SPRITE =======
 	config.addPlugin(pluginIcons, {
