@@ -237,8 +237,7 @@
 	}
 	@media (min-width: $minViewPort) and (max-width: ($maxViewPort - 1)) {
 		#{$prop}: calc(
-			#{$min} + #{strip-unit($max - $min)} *
-				((100vw - #{$minViewPort}) / (#{strip-unit($maxViewPort - $minViewPort)}))
+			#{$min} + #{strip-unit($max - $min)} * ((100vw - #{$minViewPort}) / (#{strip-unit($maxViewPort - $minViewPort)}))
 		);
 	}
 	@media (max-width: ($minViewPort - 1)) {
