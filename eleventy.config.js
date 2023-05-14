@@ -12,7 +12,7 @@ const pluginIcons = require('eleventy-plugin-icons');
 const isDev = process.env.ELEVENTY_ENV === 'development';
 const isProd = process.env.ELEVENTY_ENV === 'production';
 
-const shortcodes = require('./shortcodes');
+const shortcodes = require('./src/shortcodes');
 
 /** @param {import("@11ty/eleventy").UserConfig} config */
 module.exports = (config) => {
@@ -40,7 +40,6 @@ module.exports = (config) => {
 		postcssAssets({ loadPaths: ['src/assets/images/inline'], cache: true }),
 		isProd && postcssCsso,
 	].filter((value) => value);
-
 	config.addPlugin(eleventySass, {
 		sass: {
 			loadPaths: ['node_modules'],
