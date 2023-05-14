@@ -1,3 +1,9 @@
+@import 'lib/mixins';
+
+$default-transition-duration: 0.3s;
+$fast-transition-duration: 0.15s;
+$default-transition-function: ease-out;
+
 :root {
 	--white: #fff;
 	--black: #000;

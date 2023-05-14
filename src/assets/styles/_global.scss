@@ -1,3 +1,31 @@
-body {
-	background-color: var(--default-bg-color);
+.animated {
+	@extend .transition-active;
+	&:hover {
+		@extend .transition-hover;
+	}
+}
+
+.transition-active {
+	transition:
+		opacity $default-transition-duration $default-transition-function,
+		color $default-transition-duration $default-transition-function,
+		background $default-transition-duration $default-transition-function,
+		border-color $default-transition-duration $default-transition-function;
+}
+
+.transition-hover {
+	transition: none;
+}
+
+.visually-hidden {
+	position: absolute;
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	border: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
 }
