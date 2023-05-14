@@ -16,6 +16,9 @@ rules:
   custom-property-empty-line-before: null
   selector-no-vendor-prefix: null
   property-no-vendor-prefix: null
+  value-keyword-case:
+    - lower
+    - camelCaseSvgKeywords: true
   scss/at-mixin-pattern: null
   scss/at-extend-no-missing-placeholder: null
   order/order:
