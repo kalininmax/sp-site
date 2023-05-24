@@ -1,6 +1,6 @@
 # eleventy-starter
 
-[![EditorConfig](https://github.com/kalininmax/eleventy-starter/actions/workflows/editorconfig.yml/badge.svg)](https://github.com/kalininmax/eleventy-starter/actions/workflows/editorconfig.yml)
-[![HTML](https://github.com/kalininmax/eleventy-starter/actions/workflows/html.yml/badge.svg)](https://github.com/kalininmax/eleventy-starter/actions/workflows/html.yml)
-[![CSS](https://github.com/kalininmax/eleventy-starter/actions/workflows/css.yml/badge.svg)](https://github.com/kalininmax/eleventy-starter/actions/workflows/css.yml)
-[![JavaScript](https://github.com/kalininmax/eleventy-starter/actions/workflows/javascript.yml/badge.svg)](https://github.com/kalininmax/eleventy-starter/actions/workflows/javascript.yml)
+[![EditorConfig](../../actions/workflows/editorconfig.yml/badge.svg)](../../actions/workflows/editorconfig.yml)
+[![HTML](../../actions/workflows/html.yml/badge.svg)](../../actions/workflows/html.yml)
+[![CSS](../../actions/workflows/css.yml/badge.svg)](../../actions/workflows/css.yml)
+[![JavaScript](../../actions/workflows/javascript.yml/badge.svg)](../../actions/workflows/javascript.yml)
