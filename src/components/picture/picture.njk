@@ -2,11 +2,13 @@
 
 {% set src = props.src %}
 {% set cls = props.className %}
+{% set clsImg = props.classNameImg %}
+{% set attr = props.attr %}
 {% set sizes = props.sizes %}
 {% set alt = props.alt %}
 {% set loading = props.loading %}
 {% set decoding = props.decoding %}
 
-{% image src, cls, sizes, alt, loading, decoding %}
+{% image src, cls, clsImg, attr, sizes, alt, loading, decoding %}
 
 {% endmacro %}
