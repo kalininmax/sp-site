@@ -1,4 +1,5 @@
 extends: stylelint-config-standard-scss
+ignoreFiles: src/assets/styles/lib/**/*.scss
 plugins:
   - stylelint-order
 rules:
@@ -16,11 +17,17 @@ rules:
   custom-property-empty-line-before: null
   selector-no-vendor-prefix: null
   property-no-vendor-prefix: null
+  selector-class-pattern: null
+  no-descending-specificity: null
   value-keyword-case:
     - lower
     - camelCaseSvgKeywords: true
   scss/at-mixin-pattern: null
   scss/at-extend-no-missing-placeholder: null
+  scss/comment-no-empty: null
+  scss/no-global-function-names: null
+  scss/operator-no-unspaced: null
+  scss/operator-no-newline-after: null
   order/order:
     - dollar-variables
     - custom-properties
@@ -29,10 +36,6 @@ rules:
     # Positioning
     - all
     - position
-    - top
-    - right
-    - bottom
-    - left
     - inset
     - inset-block
     - inset-block-start
@@ -40,6 +43,10 @@ rules:
     - inset-inline
     - inset-inline-start
     - inset-inline-end
+    - top
+    - right
+    - bottom
+    - left
     - z-index
     # Block
     - display
