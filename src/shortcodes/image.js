@@ -11,6 +11,8 @@ module.exports = (src, cls, clsImg, attr, sizes = '100vw', alt = '', loading = '
 		formats: ['avif', 'webp', originalFormat],
 		urlPath: 'assets/images/' + subfolderPath,
 		outputDir: 'build/assets/images/' + subfolderPath,
+		sharpWebpOptions: { quality: 90 },
+		sharpAvifOptions: { quality: 90 },
 	};
 
 	Image(imgPath, options);
