@@ -40,10 +40,12 @@ module.exports = (config) => {
 		postcssAssets({ loadPaths: ['src/assets/images/inline'], cache: true }),
 		isProd && postcssCsso,
 	].filter((value) => value);
+
 	config.addPlugin(eleventySass, {
 		sass: {
 			loadPaths: ['node_modules'],
 			sourceMap: isDev,
+			style: isDev ? 'expanded' : 'compressed',
 		},
 		postcss: postcss(postcssPlugins),
 	});
