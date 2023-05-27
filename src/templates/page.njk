@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-{% include "header/header.njk" %}
+{{ component('header') }}
 
 <main class="page__main">
 	{{ content | safe }}

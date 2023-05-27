@@ -1,12 +1,15 @@
+{%- from "../components/system/component.njk" import component -%}
+
 <!DOCTYPE html>
 <html class="page _loading" lang="{{ site.lang }}">
 
 <head>
-	<title>{{ site.title }}</title>
-
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+	<meta name="description" content="{{ site.desc }}">
 
 	<link rel="stylesheet" href="/assets/styles/index.css?{% hash %}">
 
