@@ -1,9 +1,11 @@
----
-layout: base.njk
----
+{% extends "./base.njk" %}
 
-{{ component('header') }}
+{% block content %}
+
+{# {{ component('header') }} #}
 
 <main class="page__main">
-	{{ content | safe }}
+{% block mainContent %}{% endblock %}
 </main>
+
+{% endblock %}

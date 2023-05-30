@@ -21,7 +21,7 @@
 <body class="page__body">
 	{% svgSprite %}
 
-	{{ content | safe }}
+	{% block content %}{% endblock %}
 </body>
 
 </html>
