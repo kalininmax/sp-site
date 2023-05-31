@@ -1,13 +1,15 @@
 // ======= GLOBAL =======
 @import 'constants';
 @import 'lib/base';
+@import 'fonts';
 @import 'reset';
 @import 'global';
 @import 'layout';
 
 // ======= COMPONENTS =======
 @import '../../components/button/button';
+@import '../../components/header/header';
+@import '../../components/footer/footer';
 
 // ======= INCLUDES =======
-@import '../../includes/header/header';
 @import '../../includes/intro/intro';

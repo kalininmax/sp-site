@@ -1,21 +1,14 @@
-{% from "../../components/button/button.njk" import button %}
-{% from "../../components/icon/icon.njk" import icon %}
-{% from "../../components/picture/picture.njk" import picture %}
-
 <section class="intro">
 	<div class="container">
-		<p>{{ intro.hi }}</p>
-		<h1>{{ intro.name }}</h1>
-		<p>{{ intro.who }}</p>
-		{{ button({ text: 'Click Me!' }) }}
+		<div class="intro__text">
+			<p>{{ intro.hi }}</p>
+			<h1>{{ intro.text | safe }}</h1>
+		</div>
 
-		{{ icon({ iconName: 'svg-logo', attr: 'width=300 height=300' }) }}
-		{{ icon({ iconName: 'arrow-right', attr: 'width=300 height=300' }) }}
-
-		{{ picture({
+		{{ component('picture', {
 			src: intro.img,
-			className: 'intro__img'
+			className: 'intro__picture',
+			classNameImg: 'intro__img'
 		}) }}
-
 	</div>
 </section>

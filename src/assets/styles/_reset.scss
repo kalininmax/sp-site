@@ -14,10 +14,18 @@ body {
 	// -webkit-font-smoothing: antialiased;
 }
 
+html {
+	font-size: 16px;
+}
+
 body {
 	background: #fff;
 	color: #000;
-	font: normal 14px/1.4 Arial, sans-serif;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: rem(16);
+	line-height: 1.5;
+	font-style: normal;
+
 	@include mobile {
 		-webkit-text-size-adjust: 100%;
 	}

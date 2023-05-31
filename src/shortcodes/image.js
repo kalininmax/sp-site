@@ -1,6 +1,15 @@
 const Image = require('@11ty/eleventy-img');
 
-module.exports = (src, cls, clsImg, attr, sizes = '100vw', alt = '', loading = 'lazy', decoding = 'async') => {
+module.exports = (
+	src,
+	cls,
+	clsImg,
+	attr,
+	sizes = '100vw',
+	alt = '',
+	loading = 'lazy',
+	decoding = 'async'
+) => {
 	const originalFormat = src.match(/\.\w*$/)[0].substring(1);
 	const subfolder = src.match(/^.*\//);
 	const subfolderPath = subfolder ? subfolder[0] : '';
@@ -27,7 +36,14 @@ module.exports = (src, cls, clsImg, attr, sizes = '100vw', alt = '', loading = '
 	const pictureAttr = attr ? ` ${attr}` : '';
 
 	return `<picture${pictureClassName}${pictureAttr}>
-			${Object.values(metadata).map((imageFormat) => `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map((entry) => entry.srcset).join(', ')}" sizes="${sizes}">`).join('\n')}
+			${Object.values(metadata)
+				.map(
+					(imageFormat) =>
+						`	<source type="${imageFormat[0].sourceType}" srcset="${imageFormat
+							.map((entry) => entry.srcset)
+							.join(', ')}" sizes="${sizes}">`
+				)
+				.join('\n')}
 				<img
 					${imgClassName}
 					src="${lowsrc.url}"

@@ -4,13 +4,18 @@ $default-transition-duration: 0.3s;
 $fast-transition-duration: 0.15s;
 $default-transition-function: ease-out;
 
-:root {
+html {
 	--white: #fff;
 	--black: #000;
 	--teal: #5ab9c1;
+	--light-grey: #ddd;
 
 	--default-bg-color: var(--white);
 
 	--container-max-width: #{rem(1920)};
 	--container-padding: #{rem(40)};
+
+	@media (width < 640px) {
+		--container-padding: #{rem(16)};
+	}
 }

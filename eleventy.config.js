@@ -1,5 +1,6 @@
+const nodePath = require('path');
 const yaml = require('js-yaml');
-const htmlPrettifier = require('html-prettify');
+const prettier = require('prettier');
 const eleventySass = require('eleventy-sass');
 const postcss = require('postcss');
 const postcssMediaMinmax = require('postcss-media-minmax');
@@ -24,10 +25,15 @@ module.exports = (config) => {
 
 	config.addDataExtension('yml', (content) => yaml.load(content));
 
-	// ======= HTML =======
-	config.addTransform('html-prettify', (content, path) => {
-		if (path && path.endsWith('.html')) {
-			return htmlPrettifier(content);
+	// ======= PRETTIER =======
+	config.addTransform('prettier', (content, outputPath) => {
+		const extname = nodePath.extname(outputPath);
+
+		if (extname === '.html' || extname === '.json') {
+			return prettier.format(content, {
+				parser: extname.replace(/^./, ''),
+				useTabs: true,
+			});
 		}
 
 		return content;
@@ -69,16 +75,14 @@ module.exports = (config) => {
 	});
 
 	// ======= COPY =======
-	[
-		'src/assets/fonts',
-		'src/assets/images',
-		'src/assets/favicons',
-	].forEach((path) => config.addPassthroughCopy(path));
+	['src/assets/fonts', 'src/assets/images', 'src/assets/favicons'].forEach(
+		(path) => config.addPassthroughCopy(path)
+	);
 
 	// ======= SVG SPRITE =======
 	config.addPlugin(pluginIcons, {
 		mode: 'sprite',
-		sources: { icons: 'src/assets/images/svg/' },
+		sources: { icons: 'src/assets/svg/' },
 		default: 'icons',
 		optimize: true,
 		icon: {
@@ -86,7 +90,7 @@ module.exports = (config) => {
 		},
 		sprites: {
 			shortcode: 'svgSprite',
-			generateFile: 'assets/images/svg/sprite.svg',
+			generateFile: 'assets/svg/sprite.svg',
 			insertAll: true,
 		},
 	});

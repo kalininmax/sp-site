@@ -1,0 +1,10 @@
+<header class="header{% if props.className %} {{ props.className }}{% endif %}">
+	<div class="header__container container">
+		{{ component('icon', {
+			iconName: '11ty',
+			attr: 'width=100 height=100',
+			className: 'header__logo'
+		}) }}
+		<p class="header__title">Header</p>
+	</div>
+</header>
