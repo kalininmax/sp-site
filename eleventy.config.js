@@ -75,7 +75,9 @@ module.exports = (config) => {
 	});
 
 	// ======= COPY =======
-	['src/assets/fonts'].forEach((path) => config.addPassthroughCopy(path));
+	['src/assets/fonts', 'src/assets/images'].forEach((path) =>
+		config.addPassthroughCopy(path)
+	);
 
 	// ======= SVG SPRITE =======
 	config.addPlugin(pluginIcons, {
