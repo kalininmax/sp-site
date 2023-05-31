@@ -216,20 +216,13 @@
 }
 
 @function strip-unit($number) {
-	@if  type-of($number) == 'number' and not unitless($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
 		@return calc($number / ($number * 0 + 1px));
 	}
 	@return $number;
 }
 
-@mixin smoothValue(
-	$prop,
-	$min,
-	$max,
-	$minViewPort: $mobile,
-	$maxViewPort: $desktop,
-	$minScreen: true
-) {
+@mixin smoothValue($prop, $min, $max, $minViewPort: $mobile, $maxViewPort: $desktop, $minScreen: true) {
 	@if $minScreen {
 		@media (min-width: $minViewPort) {
 			#{$prop}: $max;
