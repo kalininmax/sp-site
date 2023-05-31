@@ -19,7 +19,8 @@ class ProjectApp {
 		this.modules = {};
 		this.components = {};
 		this.helpers = {};
-		document.addEventListener('DOMContentLoaded', () => {
+
+		window.addEventListener('load', () => {
 			HTML_CLASSLIST.remove('_loading');
 		});
 	}

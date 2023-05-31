@@ -1,8 +1,15 @@
 .intro {
-	img {
+	padding-block: rem(48);
+	text-align: center;
+	&__text {
+		margin-bottom: rem(20);
+		font-size: rem(20);
+	}
+	&__picture {
 		display: block;
-		margin-top: 24px;
-		width: 720px;
+	}
+	&__img {
+		width: rem(560);
 		max-width: 100%;
 		height: auto;
 	}

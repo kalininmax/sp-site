@@ -1,3 +1,7 @@
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+
 // A mixin for writing @font-face rules in SASS.
 // See: https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
 

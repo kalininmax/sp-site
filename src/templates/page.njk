@@ -2,10 +2,12 @@
 
 {% block content %}
 
-{# {{ component('header') }} #}
+{{ component('header') }}
 
 <main class="page__main">
-{% block mainContent %}{% endblock %}
+	{% block mainContent %}{% endblock %}
 </main>
+
+{{ component('footer') }}
 
 {% endblock %}
