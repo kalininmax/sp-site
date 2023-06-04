@@ -1,7 +1,8 @@
 const nodePath = require('path');
+const fs = require('fs');
+const sass = require('sass');
 const yaml = require('js-yaml');
 const prettier = require('prettier');
-const eleventySass = require('eleventy-sass');
 const postcss = require('postcss');
 const postcssMediaMinmax = require('postcss-media-minmax');
 const autoprefixer = require('autoprefixer');
@@ -51,13 +52,48 @@ module.exports = (config) => {
 		isProd && postcssCsso,
 	].filter((value) => value);
 
-	config.addPlugin(eleventySass, {
-		sass: {
-			loadPaths: ['node_modules'],
-			sourceMap: isDev,
-			style: isDev ? 'expanded' : 'compressed',
+	config.addTemplateFormats('scss');
+	config.addExtension('scss', {
+		outputFileExtension: 'css',
+		compile: async function (inputContent, inputPath) {
+			const parsed = nodePath.parse(inputPath);
+
+			if (parsed.name.startsWith('_')) {
+				return;
+			}
+
+			const dirname = 'build/assets/styles/';
+			const filename = parsed.name + '.css.map';
+
+			const result = sass.compileString(inputContent, {
+				loadPaths: [parsed.dir || '.', 'node_modules'],
+				sourceMap: isDev,
+			});
+
+			this.addDependencies(inputPath, result.loadedUrls);
+
+			// eslint-disable-next-line consistent-return
+			return async () => {
+				const output = await postcss(postcssPlugins).process(result.css, {
+					from: inputPath,
+					map: isDev && { prev: result.sourceMap },
+				});
+
+				isDev && output.map.toJSON();
+
+				if (isDev && output.map) {
+					fs.mkdirSync(dirname, { recursive: true });
+					fs.writeFileSync(
+						nodePath.join(dirname, filename),
+						output.map.toString()
+					);
+
+					output.css += `\n/*# sourceMappingURL=${filename} */`;
+				}
+
+				return output.css;
+			};
 		},
-		postcss: postcss(postcssPlugins),
 	});
 
 	// ======= JS =======
