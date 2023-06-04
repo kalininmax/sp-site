@@ -1,0 +1,44 @@
+<section class="page__section examples">
+	<div class="container _sm">
+
+		<details>
+			<summary><h2 style="display: inline-block">Examples</h2></summary>
+
+			<p style="margin-top: 1rem"><b>picture</b> component uses <b>eleventy-img</b> plugin to generate multiple sizes and&nbsp;formats of images and <b>picture</b> tag for them.</p>
+			<p>The list of widths: 640, 960, 1280, 1920, 2560.
+			<p>And formats: avif, webp and original image format.</p>
+			<p>But it never upscales images larger than original size.</p>
+
+			<p style="margin-top: 2rem"><b>button</b> component:</p>
+			{{ component('button', {
+				text: 'Отправить',
+				iconName: 'arrow-right',
+				iconAttr: 'width="25" height="25"'
+			}) }}
+
+			<p style="margin-top: 2rem"><b>icon</b> component (SVG-sprite):</p>
+			{{ component('icon', {
+				iconName: 'arrow-right',
+				attr: 'width="50" height="50"'
+			}) }}
+
+			<p style="margin-top: 2rem">Example of using <b>for</b> tag and <b>range()</b> function:</p>
+			{% for i in range(1, 13)  %}
+				<span>{{ i }}</span>
+			{% endfor %}
+
+			{% if project.env === 'development' %}
+				<div style="margin-top: 2rem">
+					<p><b>*Debug*</b></p>
+					<p>*Эта информация будет выводиться только при <b>project.env&nbsp;==&nbsp;'development'</b>*</p>
+				</div>
+			{% endif %}
+
+			<p style="margin-top: 2rem">More information on:</p>
+			<ul>
+				<li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks docs</a></li>
+				<li><a href="https://www.11ty.dev/docs/languages/nunjucks/" target="_blank">Eleventy docs</a></li>
+			</ul>
+		</details>
+	</div>
+</section>

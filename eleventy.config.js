@@ -23,6 +23,10 @@ module.exports = (config) => {
 		config.addShortcode(name, shortcodes[name]);
 	});
 
+	config.addFilter('debug', (...args) => {
+		console.log(...args);
+	});
+
 	config.addDataExtension('yml', (content) => yaml.load(content));
 
 	// ======= PRETTIER =======

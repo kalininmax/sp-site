@@ -1,5 +1,5 @@
 <svg
 	{% if props.className %}class="{{ props.className }}"{% endif %}
-	{% if props.attr %} {{ props.attr | safe }}{% endif %}>
+	{% if props.attr %} {{ props.attr | safe }}{% endif %} aria-hidden="true">
 	<use xlink:href="#icon-{{ props.iconName }}" />
 </svg>

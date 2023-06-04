@@ -1,6 +1,21 @@
 .button {
 	@include reset-btn;
 
-	padding: 10px;
+	display: inline-flex;
+	align-items: center;
+	column-gap: rem(8);
+	padding: rem(8) rem(16);
 	border: 1px solid currentColor;
+	text-transform: uppercase;
+	transition: box-shadow $fast-transition-duration $default-transition-function;
+	font-size: rem(18);
+	font-weight: 700;
+	&:hover,
+	&:focus-within {
+		box-shadow: 0 0 10px var(--light-grey);
+		outline: none;
+	}
+	&:active {
+		box-shadow: none;
+	}
 }

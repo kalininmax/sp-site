@@ -16,6 +16,10 @@ body {
 
 html {
 	font-size: 16px;
+
+	@media (width > $desktop-lg) {
+		font-size: vw(16, 1920);
+	}
 }
 
 body {
