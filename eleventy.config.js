@@ -92,6 +92,10 @@ module.exports = (config) => {
 			shortcode: 'svgSprite',
 			generateFile: 'assets/svg/sprite.svg',
 			insertAll: true,
+			insertAttributes: {
+				class: 'svg-sprite',
+				'aria-hidden': true,
+			},
 		},
 	});
 
