@@ -24,6 +24,7 @@ rules:
   scss/operator-no-unspaced: null
   scss/operator-no-newline-after: null
   scss/at-rule-no-unknown: null
+  scss/dollar-variable-empty-line-before: null
   order/order:
     - dollar-variables
     - custom-properties

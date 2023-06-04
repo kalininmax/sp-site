@@ -23,6 +23,10 @@ module.exports = (config) => {
 		config.addShortcode(name, shortcodes[name]);
 	});
 
+	config.addFilter('debug', (...args) => {
+		console.log(...args);
+	});
+
 	config.addDataExtension('yml', (content) => yaml.load(content));
 
 	// ======= PRETTIER =======
@@ -92,6 +96,10 @@ module.exports = (config) => {
 			shortcode: 'svgSprite',
 			generateFile: 'assets/svg/sprite.svg',
 			insertAll: true,
+			insertAttributes: {
+				class: 'svg-sprite',
+				'aria-hidden': true,
+			},
 		},
 	});
 

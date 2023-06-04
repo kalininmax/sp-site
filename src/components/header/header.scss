@@ -2,7 +2,7 @@
 	position: relative;
 	box-shadow: 0 5px 5px var(--light-grey);
 	background-color: var(--teal);
-	font-size: rem(32);
+	font-size: rem(24);
 	font-weight: 700;
 	&__container {
 		display: grid;
@@ -16,6 +16,8 @@
 	&__logo {
 		grid-row: 1/2;
 		grid-column: 1/-1;
-		margin-inline-start: rem(-20);
+		margin-inline-start: rem(-12);
+		width: rem(72);
+		height: auto;
 	}
 }
