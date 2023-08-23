@@ -1,4 +1,5 @@
 const Image = require('@11ty/eleventy-img');
+const PATHS = require('../../paths');
 
 module.exports = (
 	src,
@@ -13,13 +14,13 @@ module.exports = (
 	const originalFormat = src.match(/\.\w*$/)[0].substring(1);
 	const subfolder = src.match(/^.*\//);
 	const subfolderPath = subfolder ? subfolder[0] : '';
-	const imgPath = `src/assets/images/${src}`;
+	const imgPath = PATHS.src.images + src;
 
 	const options = {
 		widths: [640, 960, 1280, 1920, 2560],
 		formats: ['avif', 'webp', originalFormat],
-		urlPath: 'assets/images/' + subfolderPath,
-		outputDir: 'build/assets/images/' + subfolderPath,
+		urlPath: '/assets/images/' + subfolderPath,
+		outputDir: PATHS.build.images + subfolderPath,
 		sharpWebpOptions: { quality: 90 },
 		sharpAvifOptions: { quality: 90 },
 	};
