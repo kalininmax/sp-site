@@ -1,1 +1,1 @@
-module.exports = () => new Date().getTime();
+module.exports = () => crypto.randomUUID();
