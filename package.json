@@ -12,7 +12,7 @@
     "editorconfig": "editorconfig-checker",
     "html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --filterfile .vnurc build/**/*.html",
     "css": "stylelint \"src/**/*.scss\" --fix",
-    "js": "eslint eleventy.config.js src/**/*.js",
+    "js": "eslint src/**/*.js",
     "prettier": "npx prettier --write .",
     "format": "npm-run-all css prettier",
     "prepare": "husky install"
