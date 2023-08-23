@@ -1,4 +1,5 @@
 module.exports = {
 	hash: require('./hash'),
-	image: require('./image'),
+	img: require('./img'),
+	picture: require('./picture'),
 };

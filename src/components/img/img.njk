@@ -1,12 +1,11 @@
 {% set src = props.src %}
 {% set cls = props.className %}
-{% set clsImg = props.classNameImg %}
 {% set attr = props.attr %}
 {% set widths = props.widths %}
 {% set sizes = props.sizes %}
-{% set formats = props.formats %}
+{% set format = props.format %}
 {% set alt = props.alt %}
 {% set loading = props.loading %}
 {% set decoding = props.decoding %}
 
-{% picture src, cls, clsImg, attr, widths, sizes, formats, alt, loading, decoding %}
+{% img src, cls, attr, widths, sizes, format, alt, loading, decoding %}
