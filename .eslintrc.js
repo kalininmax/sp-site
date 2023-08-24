@@ -8,7 +8,7 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	ignorePatterns: ['build'],
+	ignorePatterns: ['build, build-production'],
 	rules: {
 		'prettier/prettier': 'error',
 		'no-unused-vars': 'warn',

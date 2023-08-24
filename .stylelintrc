@@ -1,6 +1,7 @@
 extends: stylelint-config-standard-scss
 ignoreFiles:
   - build/**/*.css
+  - build-production/**/*.css
   - src/assets/styles/lib/**/*.scss
 plugins:
   - stylelint-order
