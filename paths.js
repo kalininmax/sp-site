@@ -12,6 +12,11 @@ module.exports = {
 		layouts: 'templates',
 		data: 'data',
 		images: 'src/assets/images/',
+		copy: [
+			'src/assets/fonts',
+			'src/assets/images',
+			{ 'src/assets/favicons': '/' },
 		copy: ['src/assets/fonts', 'src/assets/images', 'src/assets/favicons'],
+		],
 	},
 };
