@@ -16,7 +16,7 @@ module.exports = {
 			'src/assets/fonts',
 			'src/assets/images',
 			{ 'src/assets/favicons': '/' },
-		copy: ['src/assets/fonts', 'src/assets/images', 'src/assets/favicons'],
+			{ 'src/assets/robots': '/' },
 		],
 	},
 };
