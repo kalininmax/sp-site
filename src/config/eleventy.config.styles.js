@@ -17,7 +17,7 @@ module.exports = (config) => {
 		autoprefixer,
 		postcssAssets({ loadPaths: ['src/assets/images/inline'], cache: true }),
 		isProd && postcssCsso,
-	].filter((value) => value);
+	].filter(Boolean);
 
 	config.addTemplateFormats('scss');
 	config.addExtension('scss', {
@@ -30,7 +30,7 @@ module.exports = (config) => {
 			}
 
 			const dirname = 'build/assets/styles/';
-			const filename = parsed.name + '.css.map';
+			const filename = `${parsed.name}.css.map`;
 
 			const result = sass.compileString(inputContent, {
 				loadPaths: [parsed.dir || '.', 'node_modules'],
