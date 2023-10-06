@@ -8,7 +8,7 @@ module.exports = (
 	attr,
 	widths = [640, 960, 1280, 1920, 2560],
 	sizes = '100vw',
-	formats = ['avif', 'webp'],
+	formats = ['webp'],
 	alt = '',
 	loading = 'lazy',
 	decoding = 'async'
