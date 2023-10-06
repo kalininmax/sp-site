@@ -1,3 +1,6 @@
 {
+	"Exclude": [
+		"build-production"
+	],
 	"SpacesAftertabs": true
 }
