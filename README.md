@@ -159,19 +159,35 @@ contacts.yml
 
 ```html
 <picture class="intro__picture">
-	<source type="image/webp" srcset="
-		/assets/images/intro/jOTIqPxLI5-640.webp   640w,
-		/assets/images/intro/jOTIqPxLI5-960.webp   960w,
-		/assets/images/intro/jOTIqPxLI5-1280.webp 1280w,
-		/assets/images/intro/jOTIqPxLI5-1920.webp 1920w
-	"sizes="100vw">
-	<source type="image/jpeg" srcset="
-		/assets/images/intro/jOTIqPxLI5-640.jpeg   640w,
-		/assets/images/intro/jOTIqPxLI5-960.jpeg   960w,
-		/assets/images/intro/jOTIqPxLI5-1280.jpeg 1280w,
-		/assets/images/intro/jOTIqPxLI5-1920.jpeg 1920w
-	"sizes="100vw">
-	<img class="intro__img" src="/assets/images/intro/jOTIqPxLI5-640.jpeg" width="1920" height="1281" alt="" loading="lazy" decoding="async">
+	<source
+		type="image/webp"
+		srcset="
+			/assets/images/intro/jOTIqPxLI5-640.webp   640w,
+			/assets/images/intro/jOTIqPxLI5-960.webp   960w,
+			/assets/images/intro/jOTIqPxLI5-1280.webp 1280w,
+			/assets/images/intro/jOTIqPxLI5-1920.webp 1920w
+		"
+		sizes="100vw"
+	/>
+	<source
+		type="image/jpeg"
+		srcset="
+			/assets/images/intro/jOTIqPxLI5-640.jpeg   640w,
+			/assets/images/intro/jOTIqPxLI5-960.jpeg   960w,
+			/assets/images/intro/jOTIqPxLI5-1280.jpeg 1280w,
+			/assets/images/intro/jOTIqPxLI5-1920.jpeg 1920w
+		"
+		sizes="100vw"
+	/>
+	<img
+		class="intro__img"
+		src="/assets/images/intro/jOTIqPxLI5-640.jpeg"
+		width="1920"
+		height="1281"
+		alt=""
+		loading="lazy"
+		decoding="async"
+	/>
 </picture>
 ```
 
@@ -189,12 +205,22 @@ contacts.yml
 На выходе получаем:
 
 ```html
-<img class="intro__img" src="/assets/images/intro/jHlXKeTweS-640.webp" srcset="
-	/assets/images/intro/jHlXKeTweS-640.webp   640w,
-	/assets/images/intro/jHlXKeTweS-960.webp   960w,
-	/assets/images/intro/jHlXKeTweS-1280.webp 1280w,
-	/assets/images/intro/jHlXKeTweS-1920.webp 1920w
-"sizes="100vw" width="1920" height="1281" alt="" loading="lazy" decoding="async">
+<img
+	class="intro__img"
+	src="/assets/images/intro/jHlXKeTweS-640.webp"
+	srcset="
+		/assets/images/intro/jHlXKeTweS-640.webp   640w,
+		/assets/images/intro/jHlXKeTweS-960.webp   960w,
+		/assets/images/intro/jHlXKeTweS-1280.webp 1280w,
+		/assets/images/intro/jHlXKeTweS-1920.webp 1920w
+	"
+	sizes="100vw"
+	width="1920"
+	height="1281"
+	alt=""
+	loading="lazy"
+	decoding="async"
+/>
 ```
 
 **Обратите внимание, что плагин не генерирует изображение с размерами больше исходного**
@@ -226,21 +252,7 @@ contacts.yml
 Плагин postcss-assets позволяет инлайнить изображения прямо в код в Base64 кодировке (или в виде кода в случае с SVG):
 
 ```scss
-background: inline('sp.png')
-```
-
-Так же позволяет подставить размеры картинки:
-
-```scss
-width: width('sp.png')
-```
-
-```scss
-height: height('sp.png')
-```
-
-```scss
-background-size: size('sp.png')
+background: inline("sp.png");
 ```
 
 ## Послезные ссылки
