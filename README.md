@@ -139,6 +139,66 @@ contacts.yml
 или  
 `src/includes/<include_name>/<include_name>.scss`
 
+## Responsive-картинки
+
+Компонент **picture** (`src/components/picture`), использует плагин [eleventy-img](https://github.com/11ty/eleventy-img), чтобы генерировать оптимальные изображения в webp-формате для разных экранов.
+Используемые ширины: 640, 960, 1280, 1920, 2560.
+
+Компонент **picture** создаст HTML-элемент `<picture>`, добавит `<source>` для изображений в иходном формате, и в формате webp.
+Пример использования:
+
+```
+{{ component('picture', {
+	src: intro.img,
+	className: 'intro__picture',
+	classNameImg: 'intro__img'
+}) }}
+```
+
+На выходе получаем:
+
+```
+<picture class="intro__picture">
+	<source type="image/webp" srcset="
+		/assets/images/intro/jOTIqPxLI5-640.webp   640w,
+		/assets/images/intro/jOTIqPxLI5-960.webp   960w,
+		/assets/images/intro/jOTIqPxLI5-1280.webp 1280w,
+		/assets/images/intro/jOTIqPxLI5-1920.webp 1920w
+	"sizes="100vw">
+	<source type="image/jpeg" srcset="
+		/assets/images/intro/jOTIqPxLI5-640.jpeg   640w,
+		/assets/images/intro/jOTIqPxLI5-960.jpeg   960w,
+		/assets/images/intro/jOTIqPxLI5-1280.jpeg 1280w,
+		/assets/images/intro/jOTIqPxLI5-1920.jpeg 1920w
+	"sizes="100vw">
+	<img class="intro__img" src="/assets/images/intro/jOTIqPxLI5-640.jpeg" width="1920" height="1281" alt="" loading="lazy" decoding="async">
+</picture>
+```
+
+Также существует компонент **img** (`src/components/img`), который по аналогии с `picture` компонентом, генерирует изображения в webp-формате для разных экранов. Отличие в том, что этот компонент создает только `<img>` элемент изображение в одном формате. Формат изображения можно изменить указав его в props при вызове компонента, например: `format: 'jpeg'`
+
+Пример использования:
+
+```
+{{ component('img', {
+	src: intro.img,
+	className: 'intro__img'
+}) }}
+```
+
+На выходе получаем:
+
+```
+<img class="intro__img" src="/assets/images/intro/jHlXKeTweS-640.webp" srcset="
+	/assets/images/intro/jHlXKeTweS-640.webp   640w,
+	/assets/images/intro/jHlXKeTweS-960.webp   960w,
+	/assets/images/intro/jHlXKeTweS-1280.webp 1280w,
+	/assets/images/intro/jHlXKeTweS-1920.webp 1920w
+"sizes="100vw" width="1920" height="1281" alt="" loading="lazy" decoding="async">
+```
+
+**Обратите внимание, что плагин не генерирует изображение с размерами больше исходного**
+
 ## SVG-спрайты
 
 В стартовом проекте настроена возможность создания SVG-спрайтов с помощью [eleventy-plugin-icons](https://github.com/uncenter/eleventy-plugin-icons), поэтому SVG-иконки на сайт лучше добавлять, используя компонент `icon`:
