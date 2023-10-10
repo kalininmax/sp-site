@@ -69,9 +69,9 @@ npm run zip
 
 ```njk
 <svg
-	{% if props.className %}class="{{ props.className }}"{% endif %}
-	{% if props.attr %} {{ props.attr | safe }}{% endif %}>
-	<use xlink:href="#icon-{{ props.iconName }}" />
+  {% if props.className %}class="{{ props.className }}"{% endif %}
+  {% if props.attr %} {{ props.attr | safe }}{% endif %}>
+  <use xlink:href="#icon-{{ props.iconName }}" />
 </svg>
 ```
 
@@ -79,8 +79,8 @@ npm run zip
 
 ```njk
 {{ component('icon', {
-	iconName: 'arrow-right',
-	attr: 'width="50" height="50"'
+  iconName: 'arrow-right',
+  attr: 'width="50" height="50"'
 }) }}
 ```
 
@@ -121,15 +121,15 @@ contacts.yml
 
 ```
 /styles/
-	/lib/				// Библиотеки и миксины
-	/pages/				// Стили для страниц проекта
-		_main.scss		// Стили для главной страницы
-	_constants.scss			// Переменные и константы
-	_fonts.scss			// Подключаемые шрифты
-	_global.scss			// Стили глобальных блоков
-	_layout.scss			// Стили лэйаута
-	_reset.scss			// CSS-reset и сброс стилей по умолчанию
-	index.scss			// Основной файл, который компилируется в index.css
+    /lib/				        // Библиотеки и миксины
+    /pages/				      // Стили для страниц проекта
+        _main.scss		    // Стили для главной страницы
+    _constants.scss			// Переменные и константы
+    _fonts.scss			    // Подключаемые шрифты
+    _global.scss			  // Стили глобальных блоков
+    _layout.scss			  // Стили лэйаута
+    _reset.scss			    // CSS-reset и сброс стилей по умолчанию
+    index.scss			    // Основной файл, который компилируется в index.css
 ```
 
 Для каждой страницы, при необходимости, создается отдельный файл в папке `pages`. Все подключаемые файлы должны начинаться с одного подчеркивания (`_`).
@@ -149,9 +149,9 @@ contacts.yml
 
 ```njk
 {{ component('picture', {
-	src: intro.img,
-	className: 'intro__picture',
-	classNameImg: 'intro__img'
+  src: intro.img,
+  className: 'intro__picture',
+  classNameImg: 'intro__img'
 }) }}
 ```
 
@@ -197,8 +197,8 @@ contacts.yml
 
 ```njk
 {{ component('img', {
-	src: intro.img,
-	className: 'intro__img'
+  src: intro.img,
+  className: 'intro__img'
 }) }}
 ```
 
@@ -231,9 +231,9 @@ contacts.yml
 
 ```njk
 {{ component('icon', {
-	iconName: 'arrow-right',
-	className: 'icon',
-	attr: 'width="50" height="50"'
+  iconName: 'arrow-right',
+  className: 'icon',
+  attr: 'width="50" height="50"'
 }) }}
 ```
 
