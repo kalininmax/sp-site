@@ -1,7 +1,6 @@
 {
 	"Exclude": [
-		"build-production",
-		"*.md"
+		"build-production"
 	],
 	"SpacesAftertabs": true
 }
