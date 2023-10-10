@@ -17,7 +17,9 @@ class ProjectApp {
 		this.utils = require('./utils/utils').default;
 		this.classes = {};
 		this.modules = {};
-		this.components = {};
+		this.components = {
+			Examples: require('../../includes/examples/examples').default,
+		};
 		this.helpers = {};
 
 		window.addEventListener('load', () => {
