@@ -59,7 +59,7 @@ npm run zip
 
 Так называемые инклуды или простые компоненты рекомендуется хранить в папке `src/includes/`. Так блок `intro` из папки `includes` можно добавить в шаблон страницы:
 
-```
+```njk
 {% include "intro/intro.njk" %}
 ```
 
@@ -67,7 +67,7 @@ npm run zip
 
 Пример макро-компонента `icon`:
 
-```
+```njk
 <svg
 	{% if props.className %}class="{{ props.className }}"{% endif %}
 	{% if props.attr %} {{ props.attr | safe }}{% endif %}>
@@ -77,7 +77,7 @@ npm run zip
 
 Импорт компонентов в шаблоны реализован через импорт глобального макро-компонента (`src/components/system`) в шаблоне `base.njk`. Благодаря этому, все остальные компоненты можно импортировать и использовать в нескольких местах следующим образом:
 
-```
+```njk
 {{ component('icon', {
 	iconName: 'arrow-right',
 	attr: 'width="50" height="50"'
@@ -107,7 +107,7 @@ contacts.yml
 
 После этого к ним можно обращаться в шаблонах:
 
-```
+```njk
 <h1>{{ title }}</h1>
 <p>Tel: {{ tel }}</p>
 <p>Site name: {{ site.title }}</p>
@@ -147,7 +147,7 @@ contacts.yml
 Компонент **picture** создаст HTML-элемент `<picture>`, добавит `<source>` для изображений в иходном формате, и в формате webp.
 Пример использования:
 
-```
+```njk
 {{ component('picture', {
 	src: intro.img,
 	className: 'intro__picture',
@@ -157,7 +157,7 @@ contacts.yml
 
 На выходе получаем:
 
-```
+```html
 <picture class="intro__picture">
 	<source type="image/webp" srcset="
 		/assets/images/intro/jOTIqPxLI5-640.webp   640w,
@@ -179,7 +179,7 @@ contacts.yml
 
 Пример использования:
 
-```
+```njk
 {{ component('img', {
 	src: intro.img,
 	className: 'intro__img'
@@ -188,7 +188,7 @@ contacts.yml
 
 На выходе получаем:
 
-```
+```html
 <img class="intro__img" src="/assets/images/intro/jHlXKeTweS-640.webp" srcset="
 	/assets/images/intro/jHlXKeTweS-640.webp   640w,
 	/assets/images/intro/jHlXKeTweS-960.webp   960w,
@@ -203,7 +203,7 @@ contacts.yml
 
 В стартовом проекте настроена возможность создания SVG-спрайтов с помощью [eleventy-plugin-icons](https://github.com/uncenter/eleventy-plugin-icons), поэтому SVG-иконки на сайт лучше добавлять, используя компонент `icon`:
 
-```
+```njk
 {{ component('icon', {
 	iconName: 'arrow-right',
 	className: 'icon',
@@ -225,21 +225,21 @@ contacts.yml
 
 Плагин postcss-assets позволяет инлайнить изображения прямо в код в Base64 кодировке (или в виде кода в случае с SVG):
 
-```
+```scss
 background: inline('sp.png')
 ```
 
 Так же позволяет подставить размеры картинки:
 
-```
+```scss
 width: width('sp.png')
 ```
 
-```
+```scss
 height: height('sp.png')
 ```
 
-```
+```scss
 background-size: size('sp.png')
 ```
 
