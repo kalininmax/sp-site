@@ -41,7 +41,7 @@ npm run test
 npm run build
 ```
 
-#### Создание архива `build-priduction.zip` для продакшена:
+#### Создание архива `build-production.zip` для продакшена:
 
 ```
 npm run zip
