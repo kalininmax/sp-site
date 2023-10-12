@@ -1,6 +1,10 @@
 {
 	"Exclude": [
-		"build-production"
+		"build-production",
+		"*.yml",
+		"package.json",
+		".prettierrc",
+		".stylelintrc"
 	],
 	"SpacesAftertabs": true
 }
