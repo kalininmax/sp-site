@@ -4,17 +4,15 @@ const pluginIcons = require('eleventy-plugin-icons');
 module.exports = (config) => {
 	config.addPlugin(pluginIcons, {
 		mode: 'sprite',
-		sources: { icons: 'src/assets/svg/' },
-		default: 'icons',
-		optimize: true,
+		sources: [{ name: 'custom', path: './src/assets/svg/', default: true }],
 		icon: {
 			shortcode: 'icon',
 		},
-		sprites: {
+		sprite: {
 			shortcode: 'svgSprite',
-			generateFile: 'assets/svg/sprite.svg',
-			insertAll: true,
-			insertAttributes: {
+			writeFile: 'assets/svg/sprite.svg',
+			extraIcons: { all: true, sources: ['custom'] },
+			attributes: {
 				class: 'svg-sprite',
 				'aria-hidden': true,
 			},
