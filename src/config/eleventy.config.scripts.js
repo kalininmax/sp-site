@@ -12,6 +12,7 @@ module.exports = (config) => {
 			await esbuild.build({
 				target: 'es2020',
 				entryPoints: ['./src/assets/scripts/index.js'],
+				entryNames: '[dir]/bundle',
 				minify: isProd,
 				bundle: true,
 				write: true,
