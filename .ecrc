@@ -1,8 +1,6 @@
 {
 	"Exclude": [
 		"build-production",
-		"*.yml",
-		"package.json",
 		".prettierrc",
 		".stylelintrc"
 	],
