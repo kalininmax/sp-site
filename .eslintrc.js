@@ -8,7 +8,12 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	ignorePatterns: ['build, build-production'],
+	ignorePatterns: [
+		'build',
+		'build-production',
+		'**/lib/*.js',
+		'**/vendor/*.js',
+	],
 	rules: {
 		'prettier/prettier': 'error',
 		'no-unused-vars': 'warn',
