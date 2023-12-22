@@ -19,6 +19,9 @@ module.exports = (config) => {
 	config.addPlugin(require('./src/config/eleventy.config.scripts'));
 	config.addPlugin(require('./src/config/eleventy.config.formatter'));
 	config.addPlugin(require('./src/config/eleventy.config.svg'));
+	config.addPlugin(require('./src/config/async-optimize-img'));
+
+	config.addGlobalData('env', require('dotenv').config().parsed);
 
 	PATHS.src.copy.forEach((path) => config.addPassthroughCopy(path));
 
