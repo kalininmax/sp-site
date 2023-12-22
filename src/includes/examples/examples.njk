@@ -21,11 +21,12 @@
 				<span>{{ i }}</span>
 			{% endfor %}
 
-			{% if project.env === 'development' %}
+			{% if system.mode === 'development' %}
 				<div style="margin-top: 2rem">
 					<p><b>*Debug*</b></p>
-					<p>*Эта информация будет выводиться только при <b>project.env&nbsp;==&nbsp;'development'</b>*</p>
+					<p>*Эта информация будет выводиться только при <b>system.mode&nbsp;==&nbsp;'development'</b>*</p>
 				</div>
+
 			{% endif %}
 
 			<p style="margin-top: 2rem">More information on:</p>
