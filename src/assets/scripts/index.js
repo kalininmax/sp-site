@@ -13,8 +13,8 @@ const HTML_CLASSLIST = document.documentElement.classList;
 
 class ProjectApp {
 	constructor() {
-		this.env = require('./utils/env').default;
-		this.utils = require('./utils/utils').default;
+		// this.env = require('./utils/env').default;
+		// this.utils = require('./utils/utils').default;
 		this.classes = {};
 		this.modules = {};
 		this.components = {
