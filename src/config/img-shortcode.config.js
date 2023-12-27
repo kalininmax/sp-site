@@ -6,7 +6,7 @@ module.exports = async (props) => {
 	const {
 		cls,
 		attr,
-		widths = [640, 960, 1280, 1920, 2560],
+		widths = [425, 640, 960, 1280, 1920, 2560],
 		sizes = '100vw',
 		format = 'webp',
 		alt = '',
