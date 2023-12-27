@@ -7,7 +7,7 @@ module.exports = async (props) => {
 		cls,
 		clsImg,
 		attr,
-		widths = [425, 640, 960, 1280, 1920, 2560],
+		widths = [640, 1280, 1920, 2560],
 		sizes = '100vw',
 		formats = ['avif', 'webp'],
 		alt = '',
