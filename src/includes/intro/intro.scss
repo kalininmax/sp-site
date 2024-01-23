@@ -16,5 +16,7 @@
 }
 
 @keyframes flying {
-	to { transform: translateY(-5%); }
+	to {
+		transform: translateY(-5%);
+	}
 }

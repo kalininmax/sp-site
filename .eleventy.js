@@ -8,7 +8,7 @@ module.exports = (config) => {
 	config.ignores.add('src/components');
 
 	Object.keys(shortcodes).forEach((name) =>
-		config.addShortcode(name, shortcodes[name])
+		config.addShortcode(name, shortcodes[name]),
 	);
 
 	config.addFilter('debug', (...args) => console.log(...args));

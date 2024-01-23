@@ -6,12 +6,30 @@ ignoreFiles:
 plugins:
   - stylelint-order
 rules:
+  no-duplicate-selectors: true
+  color-hex-length: short
+  selector-attribute-quotes: always
+  declaration-no-important: true
+  function-url-quotes: always
+  font-weight-notation:
+    - numeric
+    - ignore:
+        - relative
+  font-family-name-quotes: always-unless-keyword
+  comment-whitespace-inside: always
+  comment-empty-line-before: always
   rule-empty-line-before:
     - always
     - except:
         - inside-block
-        - after-single-line-comment
-  selector-pseudo-element-no-unknown: null
+  at-rule-empty-line-before:
+    - always
+    - ignore:
+        - after-comment
+        - first-nested
+        - blockless-after-same-name-blockless
+    - except:
+  selector-pseudo-element-colon-notation: double
   custom-property-empty-line-before: null
   selector-no-vendor-prefix: null
   property-no-vendor-prefix: null
@@ -20,6 +38,7 @@ rules:
   value-keyword-case:
     - lower
     - camelCaseSvgKeywords: true
+  scss/at-else-empty-line-before: never
   scss/at-mixin-pattern: null
   scss/at-extend-no-missing-placeholder: null
   scss/comment-no-empty: null

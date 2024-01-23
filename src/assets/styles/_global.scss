@@ -17,7 +17,8 @@
 }
 
 .transition-active {
-	transition: opacity $default-transition-duration $default-transition-function,
+	transition:
+		opacity $default-transition-duration $default-transition-function,
 		color $default-transition-duration $default-transition-function,
 		background $default-transition-duration $default-transition-function,
 		border-color $default-transition-duration $default-transition-function;

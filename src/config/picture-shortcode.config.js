@@ -46,7 +46,7 @@ module.exports = async (props) => {
 					(imageFormat) =>
 						`	<source type="${imageFormat[0].sourceType}" srcset="${imageFormat
 							.map((entry) => entry.srcset)
-							.join(', ')}" sizes="${sizes}">`
+							.join(', ')}" sizes="${sizes}">`,
 				)
 				.join('\n')}
 				<img
