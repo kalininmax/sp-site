@@ -8,8 +8,13 @@
 		display: block;
 	}
 	&__img {
-		width: rem(560);
+		width: rem(240);
 		max-width: 100%;
 		height: auto;
+		animation: flying 1s ease-in-out infinite alternate;
 	}
+}
+
+@keyframes flying {
+	to { transform: translateY(-5%); }
 }

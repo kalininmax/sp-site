@@ -71,7 +71,7 @@ npm run zip
 <svg
 	{% if props.className %}class="{{ props.className }}"{% endif %}
 	{% if props.attr %} {{ props.attr | safe }}{% endif %}>
-	<use xlink:href="#icon-{{ props.iconName }}" />
+	<use xlink:href="/assets/svg/sprite.svg#icon-{{ props.iconName }}" />
 </svg>
 ```
 

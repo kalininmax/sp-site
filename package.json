@@ -19,6 +19,9 @@
 		"format": "npm-run-all css prettier",
 		"prepare": "husky install"
 	},
+	"engines": {
+		"node": "18"
+	},
 	"browserslist": [
 		"last 2 version",
 		"not dead"
