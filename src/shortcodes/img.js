@@ -9,7 +9,7 @@ module.exports = function (
 	format,
 	alt,
 	loading,
-	decoding
+	decoding,
 ) {
 	const properties = JSON.stringify({
 		src,

@@ -29,7 +29,7 @@ module.exports = (config) => {
 					const html = await getPictureHTML(propertiesString);
 					content = content.replace(placeholder, html);
 				}
-			}
+			},
 		);
 
 		await Promise.all(promises);
