@@ -11,7 +11,7 @@ module.exports = (
 	formats = ['webp'],
 	alt = '',
 	loading = 'lazy',
-	decoding = 'async'
+	decoding = 'async',
 ) => {
 	let originalFormat = src.match(/\.\w*$/)[0].substring(1);
 	originalFormat = originalFormat === 'jpg' ? 'jpeg' : originalFormat;
@@ -46,7 +46,7 @@ module.exports = (
 					(imageFormat) =>
 						`	<source type="${imageFormat[0].sourceType}" srcset="${imageFormat
 							.map((entry) => entry.srcset)
-							.join(', ')}" sizes="${sizes}">`
+							.join(', ')}" sizes="${sizes}">`,
 				)
 				.join('\n')}
 				<img

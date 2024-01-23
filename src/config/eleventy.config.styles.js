@@ -52,7 +52,7 @@ module.exports = (config) => {
 					fs.mkdirSync(dirname, { recursive: true });
 					fs.writeFileSync(
 						nodePath.join(dirname, filename),
-						output.map.toString()
+						output.map.toString(),
 					);
 
 					output.css += `\n/*# sourceMappingURL=${filename} */`;
