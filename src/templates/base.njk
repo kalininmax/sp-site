@@ -1,7 +1,7 @@
 {% from "../components/system/component.njk" import component %}
 
 <!DOCTYPE html>
-<html class="page _loading" lang="{{ site.lang }}">
+<html class="page _loading{% if template %}{{ template }}{% endif %}" lang="{{ site.lang }}">
 
 <head>
 	<meta charset="utf-8">
