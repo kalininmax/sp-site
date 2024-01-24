@@ -11,14 +11,15 @@
 
 const HTML_CLASSLIST = document.documentElement.classList;
 
-class ProjectApp {
+class SborkaProject {
 	constructor() {
 		// this.env = require('./utils/env').default;
 		// this.utils = require('./utils/utils').default;
 		this.classes = {};
 		this.modules = {};
 		this.components = {
-			Examples: require('../../includes/examples/examples').default,
+			BreakoutGame: require('../../components/breakout-game/breakout-game')
+				.default,
 		};
 		this.helpers = {};
 
@@ -28,4 +29,4 @@ class ProjectApp {
 	}
 }
 
-window.ProjectApp = new ProjectApp();
+window.SborkaProject = new SborkaProject();
