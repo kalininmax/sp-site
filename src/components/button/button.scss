@@ -1,21 +1,38 @@
 .button {
 	@include reset-btn;
 
+	$this: &;
+
 	display: inline-flex;
 	align-items: center;
-	column-gap: rem(8);
-	padding: rem(8) rem(16);
-	border: 1px solid currentColor;
-	text-transform: uppercase;
-	transition: box-shadow $fast-transition-duration $default-transition-function;
-	font-size: rem(18);
-	font-weight: 700;
-	&:hover,
-	&:focus-within {
-		box-shadow: 0 0 10px var(--light-grey);
-		outline: none;
+	column-gap: rem(12);
+	padding: rem(16) rem(20);
+	border-radius: rem(8);
+	font-size: var(--button-font-size);
+	line-height: 1.1;
+	font-weight: 500;
+	transition: opacity $default-transition-duration $default-transition-function;
+
+	@include desktop {
+		&:hover {
+			opacity: 0.8;
+		}
 	}
-	&:active {
-		box-shadow: none;
+	&._light {
+		background-color: var(--color-accent-bg);
+		color: var(--color-base-text);
+	}
+	&._dark {
+		background-color: var(--color-accent-bg-2);
+		color: var(--color-base-text-2);
+	}
+	&._menu {
+		flex-direction: row-reverse;
+	}
+	&__icon {
+		height: auto;
+		#{$this}._menu & {
+			width: rem(27);
+		}
 	}
 }

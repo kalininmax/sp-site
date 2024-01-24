@@ -1,3 +1,22 @@
+{% if props.href %}
+<a
+	class="button{% if props.className %} {{ props.className }}{% endif %}"
+	href="{{ props.href }}"
+	{% if props.attr %} {{ props.attr }}{% endif %}>
+
+	{% if props.text %}
+		<span class="button__text">{{ props.text }}</span>
+	{% endif %}
+
+	{% if props.iconName %}
+		{{ component('icon', {
+			iconName: props.iconName,
+			className: 'button__icon',
+			attr: props.iconAttr
+		}) }}
+	{% endif %}
+</a>
+{% else %}
 <button
 	class="button{% if props.className %} {{ props.className }}{% endif %}"
 	type="{% if props.type %}{{ props.type }}{% else %}button{% endif %}"
@@ -14,5 +33,5 @@
 			attr: props.iconAttr
 		}) }}
 	{% endif %}
-
 </button>
+{% endif %}

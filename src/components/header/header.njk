@@ -1,10 +1,26 @@
 <header class="header{% if props.className %} {{ props.className }}{% endif %}">
 	<div class="header__container container">
-		{{ component('icon', {
-			iconName: '11ty',
-			attr: 'width="72" height="72"',
-			className: 'header__logo'
+		<nav class="header__nav">
+			<a href="/" class="header__logo" aria-label="На главную">
+				{{ component('icon', {
+					className: 'header__logo-icon',
+					iconName: 'sp-logo',
+					attr: 'width="49" height="32"'
+				}) }}
+			</a>
+			{{ component('button', {
+				text: 'Меню',
+				className: 'header__button _light _menu',
+				attr: 'data-menu-toggle',
+				iconName: 'menu-dots',
+				iconAttr: 'width="27" height="7"'
+			}) }}
+		</nav>
+
+		{{ component('button', {
+			text: 'Обсудить проект',
+			href: '#',
+			className: 'header__button _dark'
 		}) }}
-		<p class="header__title">Header</p>
 	</div>
 </header>
