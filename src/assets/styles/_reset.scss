@@ -23,8 +23,8 @@ html {
 }
 
 body {
-	background: #fff;
-	color: #000;
+	background: var(--color-site-bg);
+	color: var(--color-base-text);
 	font-family: 'Roboto', 'Arial', sans-serif;
 	font-size: rem(16);
 	line-height: 1.5;
@@ -55,11 +55,7 @@ img {
 
 a {
 	color: inherit;
-	text-decoration: underline;
-	&:hover {
-		color: #333;
-		text-decoration: none;
-	}
+	text-decoration: none;
 }
 
 table {

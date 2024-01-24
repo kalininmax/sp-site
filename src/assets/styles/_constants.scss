@@ -5,22 +5,25 @@ $fast-transition-duration: 0.15s;
 $default-transition-function: ease-out;
 
 $desktop-lg: 1920px;
-$desktop-md: 1440px;
-$mobile-lg: 640px;
-$mobile-sm: 320px;
+$desktop: 1440px;
+$tablet: 960px;
+$mobile: 320px;
 
 html {
-	--white: #fff;
-	--black: #000;
-	--teal: #5ab9c1;
-	--light-grey: #ddd;
-
-	--default-bg-color: var(--white);
-
 	--container-max-width: #{rem(1400)};
-	--container-padding: #{rem(40)};
+	--container-padding: #{rem(20)};
 
-	@media (width < $mobile-lg) {
-		--container-padding: #{rem(16)};
+	--button-font-size: #{rem(28)};
+
+	@media (width <= $tablet) {
+		--container-padding: #{rem(10)};
+
+		--button-font-size: #{rem(22)};
+	}
+
+	@media (width <= $mobile) {
+		--container-padding: #{rem(10)};
+
+		--button-font-size: #{rem(18)};
 	}
 }

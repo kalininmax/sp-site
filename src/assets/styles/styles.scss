@@ -10,6 +10,10 @@
 @import '../../components/button/button';
 @import '../../components/header/header';
 @import '../../components/footer/footer';
+@import '../../components/breakout-game/breakout-game';
 
 // ======= INCLUDES =======
-@import '../../includes/intro/intro';
+// @import '../../includes/intro/intro';
+
+// ======= PAGES =======
+@import './pages/404';
