@@ -1,0 +1,9 @@
+.page {
+	$this: &;
+	&._404 {
+		#{$this}__main {
+			display: flex;
+			padding-bottom: rem(50);
+		}
+	}
+}

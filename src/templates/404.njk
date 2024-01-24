@@ -1,0 +1,11 @@
+{% extends "./base.njk" %}
+
+{% block content %}
+
+{{ component('header') }}
+
+<main class="page__main">
+	{% block mainContent %}{% endblock %}
+</main>
+
+{% endblock %}
